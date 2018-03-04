@@ -1,32 +1,53 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <site-header/>
     <router-view/>
   </div>
 </template>
 
+<script>
+import SiteHeader from '@/components/SiteHeader'
+
+export default {
+  name: 'app',
+  head: {
+    link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Quicksand:400,700' }
+    ]
+  },
+  components: {
+    SiteHeader
+  }
+}
+</script>
+
 <style>
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+}
+.container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
