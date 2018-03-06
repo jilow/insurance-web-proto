@@ -2,11 +2,13 @@
   <div id="app">
     <site-header/>
     <router-view/>
+    <chat-box/>
   </div>
 </template>
 
 <script>
 import SiteHeader from '@/components/SiteHeader'
+import ChatBox from '@/components/ChatBox'
 
 export default {
   name: 'app',
@@ -16,7 +18,8 @@ export default {
     ]
   },
   components: {
-    SiteHeader
+    SiteHeader,
+    ChatBox
   }
 }
 </script>

@@ -68,7 +68,11 @@ export default {
           { min: 4, message: 'Password must be 4 characters long', trigger: 'blur' }
         ],
         id: [
-          { required: true, message: 'Please enter your ID Number', trigger: 'blur' },
+          { required: true, trigger: 'blur', validator: function(rule, id, cb) {
+            if (!id.number) return cb(new Error('Please enter your ID Number'))
+            if (!/^[0-9]{13}$/.test(id.number)) return cb(new Error('Please enter a valid ID Number'))
+            return cb()
+          }}
         ]
       }
     }
