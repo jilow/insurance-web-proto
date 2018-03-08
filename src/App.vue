@@ -2,13 +2,13 @@
   <div id="app">
     <site-header/>
     <router-view/>
-    <chat-box/>
+    <dialogflow-box/>
   </div>
 </template>
 
 <script>
 import SiteHeader from '@/components/SiteHeader'
-import ChatBox from '@/components/ChatBox'
+import DialogflowBox from '@/components/DialogflowBox'
 
 export default {
   name: 'app',
@@ -19,7 +19,7 @@ export default {
   },
   components: {
     SiteHeader,
-    ChatBox
+    DialogflowBox
   }
 }
 </script>
