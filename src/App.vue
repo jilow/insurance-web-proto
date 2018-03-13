@@ -2,13 +2,13 @@
   <div id="app">
     <site-header/>
     <router-view/>
-    <dialogflow-box/>
+    <custom-bot/>
   </div>
 </template>
 
 <script>
 import SiteHeader from '@/components/SiteHeader'
-import DialogflowBox from '@/components/DialogflowBox'
+import CustomBot from '@/components/CustomBot'
 
 export default {
   name: 'app',
@@ -19,7 +19,7 @@ export default {
   },
   components: {
     SiteHeader,
-    DialogflowBox
+    CustomBot,
   }
 }
 </script>
