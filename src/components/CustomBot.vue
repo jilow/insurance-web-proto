@@ -1,15 +1,18 @@
 <template>
     <div class="chat-container">
       <div id="chat-icon" class="jump" v-on:click="toggleChatWindow()">
-        <img src="img/robot_icon.png"/>
+        <img src="../assets/bot-avatar.png"/>
       </div>
-      <div id="chat"></div>
+      <div id="chat" ref="chat">
+        <div class="chat-background"></div>
+      </div>
     </div>
 </template>
 
 <script>
 import { Bubbles } from "../../node_modules/chat-bubble/component/Bubbles.js"
-import { ApiAiClient } from "api-ai-javascript";
+import { ApiAiClient } from "api-ai-javascript"
+import anime from 'animejs'
 
 export default {
   name: 'CustomBot',
@@ -52,14 +55,21 @@ export default {
       this.chatWindow.talk(convo)
     },
     hideChat(){
-      document.getElementById("chat").style.opacity = 0
+      anime({
+        targets: this.$refs.chat,
+        duration: 1500,
+        opacity: 0
+      });
       this.chatWindowOpen = false
     },
     showChat(){
-      console.log("showing chat")
       this.chatWindow = this.initChatWindow()
-      document.getElementById("chat").style.opacity = 1
       this.chatWindowOpen = true
+      anime({
+        targets: this.$refs.chat,
+        duration: 2500,
+        opacity: 1
+      });
     },
     toggleChatWindow(){
         if(this.chatWindowOpen){
@@ -71,8 +81,8 @@ export default {
     }
   },
   mounted(){
-    this.chatWindowOpen = false;
-    this.chatWindowInitialized = false;
+    this.chatWindowOpen = false
+    this.chatWindowInitialized = false
   }
 }
 </script>
@@ -91,18 +101,33 @@ export default {
   bottom: 0;
   right: 4rem;
   font-size: 14px;
+  background: #f5faff;
+}
+.bubble{
+  background: #409eff;
+  color: white;
 }
 .bubble-container .input-wrap textarea {
-    width: calc(100%);
-    margin: 0;
+    width: calc(100% + 2px);
+    margin: 1px 0px 0px -1px;
     resize: none;
     border-radius: 0;
     padding: 26px 15px 18px;
     vertical-align: middle;
     line-height: 8px;
+    background: #353535;
+    color: white;
+}
+.bubble-container .input-wrap textarea::placeholder{
+  color: white;
+}
+.bubble.reply .bubble-content .bubble-button.bubble-pick{
+  background: #353535;
 }
 .bubble-typing {
-	width: 65px;
+  width: 65px;
+  height: 30px;
+  background: #409eff;
 }
 #chat{
     width: 400px;
@@ -112,6 +137,9 @@ export default {
     right: 100px;
     display: block;
     opacity: 0;
+    border-radius: 10px 10px 5px 10px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    border: 1px solid #ebeef5;
 }
 #chat-icon{
     width: 60px;
@@ -126,11 +154,25 @@ export default {
     width: 60px;
     height: 60px;
 }
+.chat-background{
+  height: 100%;
+  width: 100%;
+  background: url("../assets/gadget-doodle.jpg");
+  opacity: 0.04;
+}
 .bubble.reply .bubble-content .bubble-button.bubble-pick{
     margin-bottom: 3px;
 }
 .input-wrap{
     height: 60px;
+}
+.bubble-wrap::-webkit-scrollbar {
+	width: 10px;
+}
+
+.bubble-wrap::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background: rgba(0,0,0,.1);
 }
 .jump {
     animation: jump 1s 2s forwards cubic-bezier(.84,-0.54,.31,1.19);
