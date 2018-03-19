@@ -4,18 +4,21 @@
       <div class="background"></div>
       <h1>Insurance that works for you.</h1>
     </section>
-    <section>
+    <section class="main">
       <div class="container">
-        
+        <gadget-list/>
       </div>
     </section>
   </main>
 </template>
 
 <script>
+import GadgetList from '@/components/GadgetList'
+
 export default {
   name: 'home',
   components: {
+    GadgetList
   }
 }
 </script>
@@ -60,5 +63,9 @@ export default {
   height: 100%;
   background-color: #414a4f;
   opacity: 0.5;
+}
+.main {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 </style>

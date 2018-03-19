@@ -2,13 +2,13 @@
   <div id="app">
     <site-header/>
     <router-view/>
-    <custom-bot/>
+    <chat-bubble/>
   </div>
 </template>
 
 <script>
 import SiteHeader from '@/components/SiteHeader'
-import CustomBot from '@/components/CustomBot'
+import ChatBubble from '@/components/ChatBubble'
 
 export default {
   name: 'app',
@@ -19,7 +19,7 @@ export default {
   },
   components: {
     SiteHeader,
-    CustomBot,
+    ChatBubble,
   }
 }
 </script>

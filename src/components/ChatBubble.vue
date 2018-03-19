@@ -15,7 +15,7 @@ import { ApiAiClient } from "api-ai-javascript"
 import anime from 'animejs'
 
 export default {
-  name: 'CustomBot',
+  name: 'ChatBubble',
   data() {
     return {}
   },
